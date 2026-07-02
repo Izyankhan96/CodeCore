@@ -1,2 +1,2 @@
 # CodeCore
-# This branch is only to Implement Tests and is not used for real-time coding purposes.
+# This branch is where we store our code and data.
