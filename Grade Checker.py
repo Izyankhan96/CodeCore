@@ -1,5 +1,8 @@
 # This program is a grade checker that takes a user's name and displays their grades for three semesters.
 name = input("What is your name? :")
+while name != "Izyan":
+    print("Sorry I dont see your name in our grading system, please try again.")
+    name = input("What is your name? :")
 print(f"Hello, {name} I see your name in our grading system")
 student_id = input("What is your student ID? :")
 while student_id != "7697623072":
