@@ -1,2 +1,2 @@
 # CodeCore
-# This branch is where we store our code and data.
+# This is a project where you can view your grades and have to provide some information to proceed.
