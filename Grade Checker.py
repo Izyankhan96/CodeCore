@@ -11,7 +11,9 @@ while student_id != "7697623072":
 print(f"Welcome back! {name} here are your grades for the three semesters.")
 print("Here is your grade for semester 1 :")
 grade_semester1 = 70
-if grade_semester1 >= 90:
+if grade_semester1 >= 95:
+    print("A+")
+elif grade_semester1 >= 90:
     print("A")
 elif grade_semester1 >= 80:
     print("B")
@@ -23,7 +25,9 @@ else:
     print("F")
 print("Your grade for semester 2 :")
 grade_semester2 = 86
-if grade_semester2 >= 90:
+if grade_semester2 >= 95:
+    print("A+")
+elif grade_semester2 >= 90:
     print("A")
 elif grade_semester2 >= 80:
     print("B")
