@@ -1,50 +1,27 @@
 # This is only to be used to Implement Test cases.
-name = input("Enter your name: ")
-while name != "Izyan":
-    print("Invalid name. Please try again.")
-    name = input("Enter your name: ")
-print("Please enter your password below to continue")
-password = input("Enter your password: ")
-while password != "Izyan124":
-    print("Invalid password. Please try again.")
-    password = input("Enter your password: ")
-print("Access granted. Welcome, Izyan!")
-grade_semester1 = 90
-if grade_semester1 >= 95:
-    print("A+")
-elif grade_semester1 >= 90:
-    print("A")
-elif grade_semester1 >= 85:
-    print("B+")
-elif grade_semester1 >= 80:
-    print("B")      
-elif grade_semester1 >= 75:
-    print("C")
-elif grade_semester1 >= 70:
-    print("D")
-else:
-    print("F")
+name = input("Please Enter your name: ")
 while name != "Aiza":
-    print("Invalid name. Please try again.")
-    name = input("Enter your name: ")
-print("Please enter your password below to continue")
-password = input("Enter your password: ")
+    print("Invalid name Please try again.")
+    name = input("Please enter your name: ")
+print("Please enter your password below to continue.")
+password = input("Please Enter your password: ")
 while password != "Aiza123":
-    print("Invalid password. Please try again.")
-    password = input("Enter your password: ")
-print("Access granted. Welcome, Aiza!")
-grade_semester1_aiza = 96
-if grade_semester1_aiza >= 95:
+    print("Invalid Password Please try again.")
+    password = input("Please enter your password: ")
+print("Welcome back Aiza! Access granted.")
+print("Here is your grade for this semester :")
+grade = 90
+if grade >= 95:
     print("A+")
-elif grade_semester1_aiza >= 90:       
+elif grade >= 90:
     print("A")
-elif grade_semester1_aiza >= 85:
+elif grade >= 85:
     print("B+")
-elif grade_semester1_aiza >= 80:
+elif grade >= 80:
     print("B")
-elif grade_semester1_aiza >= 75:
-    print("C")
-elif grade_semester1_aiza >= 70:
-    print("D")
+elif grade >= 75:
+    print("C+")
+elif grade >= 70:
+    print("C")  
 else:
     print("F")
