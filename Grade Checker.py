@@ -5,7 +5,7 @@ while name != "Izyan":
     name = input("What is your name? :")
 print(f"Hello, {name} I see your name in our grading system")
 student_id = input("What is your student ID? :")
-while student_id != "7697623072":
+while student_id != "2999999":
     print("That is not a valid student ID, please try again.")
     student_id = input("What is your student ID? :")
 print(f"Welcome back! {name} here are your grades for the three semesters.")
