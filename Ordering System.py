@@ -1,48 +1,56 @@
 print("Welcome to the ordering system beta ")
 food = ["Pizza", "Burger", "Pasta", "Salad", "Sushi"]
 print("Here is the menu:")
-print(food)
-order = input("What would you like to order? ")
-if order in food:
-    print(f"Great choice! You have ordered {order}.")
-else:
-    print("Sorry, that item is not on the menu.")
-drink = ["Water", "Soda", "Pineapple Fanta special", "Juice"]
+for item in food:
+    print(f"- {item}")
+order = input("What would you like to order? ").strip().title()
+while order not in food:
+    print("Sorry, that item is not on the menu. Please try again.")
+    order = input("What would you like to order? ").strip().title()
+print(f"Great choice! You have ordered {order}.")
+drink = ["Water", "Soda", "Pineapple Fanta Special", "Juice"]
 print("Here are the available drinks:")
-print(drink)
-option_drink = input("What drink would you like to order? : ")
+for item in drink:
+    print(f"- {item}")
+option_drink = input("What drink would you like to order? : ").strip().title()
+while option_drink not in drink:
+    print("Sorry, that drink is not available. Please try again.")
+    option_drink = input("What drink would you like to order? : ").strip().title()
 price_pizza = 10
 price_burger = 8
 price_pasta = 12
 price_salad = 7
 price_sushi = 15
 if order == "Pizza":
-    print(f"The price of your order is ${price_pizza}.")
+    food_price = price_pizza
 elif order == "Burger":
-    print(f"The price of your order is ${price_burger}.")
+    food_price = price_burger
 elif order == "Pasta":
-    print(f"The price of your order is ${price_pasta}.")
+    food_price = price_pasta
 elif order == "Salad":
-    print(f"The price of your order is ${price_salad}.")
+    food_price = price_salad
 elif order == "Sushi":
-    print(f"The price of your order is ${price_sushi}.")
+    food_price = price_sushi
+print(f"The price of your order is ${food_price}.")
 price_water = 1
 price_soda = 2
 price_pineapple_fanta_special = 3
 price_juice = 2
 if option_drink == "Water":
-    print(f"The price of your drink is ${price_water}.")
+    drink_price = price_water
 elif option_drink == "Soda":
-    print(f"The price of your drink is ${price_soda}.")
-elif option_drink == "Pineapple Fanta special":
-    print(f"The price of your drink is ${price_pineapple_fanta_special}.")
+    drink_price = price_soda
+elif option_drink == "Pineapple Fanta Special":
+    drink_price = price_pineapple_fanta_special
 elif option_drink == "Juice":
-    print(f"The price of your drink is ${price_juice}.")
-else:
-    print("Sorry, that drink is not available.")
+    drink_price = price_juice
+print(f"The price of your drink is ${drink_price}.")
+
+total = food_price + drink_price
 
 print("Your order summary:")
-print(f"Food: {order}")
-print(f"Drink: {option_drink}")
+print(f"Food: {order} - ${food_price}")
+print(f"Drink: {option_drink} - ${drink_price}")
+print(f"Total: ${total}")
 
 print("Thank you for your order! Your food will be ready shortly.")
