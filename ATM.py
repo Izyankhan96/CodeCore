@@ -1,41 +1,44 @@
-print("Welcome to FDB Bank ATM! Please enter your PIN to continue ")
+print("Welcome to FDB Bank ATM! Please enter your PIN to continue")
 pin = input("Enter your PIN: ")
 while pin != "2090":
-    print("Sorry That is incorrect. Please try again 2 attempts remaining")
+    print("Sorry, that is incorrect. Please try again.")
     pin = input("Enter your PIN: ")
-print("Welcome Back MUHAMMAD! please select an option below to continue")
-def get_amount(prompt):
-    while True:
-        amount = input(prompt).strip()
-        if amount.isdigit() and int(amount) > 0:
-            return int(amount)
-        print("Please enter a valid amount using numbers only (e.g. 50).")
+print("Welcome Back MUHAMMAD!")
 
 balance = 14670
-while True:
+options = ["1", "2", "3", "4"]
+option = ""
+
+while option != "4":
     print("Please select an option below to continue")
     print("1. WITHDRAWAL")
     print("2. DEPOSIT")
     print("3. BALANCE INQUIRY")
     print("4. EXIT")
-    option = input("Enter your choice (1-4 or option name): ").strip().upper()
-    if option in ("1", "WITHDRAWAL"):
-        money = get_amount("Enter the amount you want to withdraw: ")
-        if money > 1000:
+    option = input("Enter your choice (1-4): ")
+    while option not in options:
+        print("Invalid option selected. Please choose 1, 2, 3 or 4.")
+        option = input("Enter your choice (1-4): ")
+
+    if option == "1":
+        money = int(input("Enter the amount you want to withdraw: "))
+        if money <= 0:
+            print("Please enter an amount greater than $0.")
+        elif money > 1000:
             print("Sorry, you cannot withdraw more than $1000 at a time.")
         elif money > balance:
             print("Sorry, you do not have enough funds.")
         else:
-            balance -= money
+            balance = balance - money
             print(f"You have successfully withdrawn ${money}.")
-    elif option in ("2", "DEPOSIT"):
-        money = get_amount("Enter the amount you want to deposit: ")
-        balance += money
-        print(f"You have successfully deposited ${money}.")
-    elif option in ("3", "BALANCE INQUIRY", "BALANCE"):
+    elif option == "2":
+        money = int(input("Enter the amount you want to deposit: "))
+        if money <= 0:
+            print("Please enter an amount greater than $0.")
+        else:
+            balance = balance + money
+            print(f"You have successfully deposited ${money}.")
+    elif option == "3":
         print(f"Your current balance is: ${balance}.")
-    elif option in ("4", "EXIT"):
-        print("Thank you for using FDB Bank ATM. Have a great day!")
-        break
     else:
-        print("Invalid option selected. Please try again.")
+        print("Thank you for using FDB Bank ATM. Have a great day!")
