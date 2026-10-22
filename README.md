@@ -21,12 +21,12 @@ variables, input, f-strings, if/elif/else, lists and while loops.
   4 Exit.
 - Withdrawals must be more than $0, no more than $1000 at a time, and no more
   than your balance.
+- Amounts must be whole dollars typed with numbers only (e.g. `50`). Anything
+  else, such as `abc`, `20.50`, `$50` or a blank entry, asks for the amount
+  again.
 
 Run it with:
 
 ```
 python3 ATM.py
 ```
-
-Typing letters when asked for an amount will crash the program. Handling that
-needs `try`/`except`, which is a later topic.

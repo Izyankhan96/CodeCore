@@ -7,6 +7,7 @@ print("Welcome Back MUHAMMAD!")
 
 balance = 14670
 options = ["1", "2", "3", "4"]
+digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 option = ""
 
 while option != "4":
@@ -21,7 +22,20 @@ while option != "4":
         option = input("Enter your choice (1-4): ")
 
     if option == "1":
-        money = int(input("Enter the amount you want to withdraw: "))
+        is_number = False
+        while not is_number:
+            amount = input("Enter the amount you want to withdraw: ")
+            is_number = True
+            if amount == "":
+                is_number = False
+            i = 0
+            while i < len(amount):
+                if amount[i] not in digits:
+                    is_number = False
+                i = i + 1
+            if not is_number:
+                print("Please enter the amount using numbers only (e.g. 50).")
+        money = int(amount)
         if money <= 0:
             print("Please enter an amount greater than $0.")
         elif money > 1000:
@@ -32,7 +46,20 @@ while option != "4":
             balance = balance - money
             print(f"You have successfully withdrawn ${money}.")
     elif option == "2":
-        money = int(input("Enter the amount you want to deposit: "))
+        is_number = False
+        while not is_number:
+            amount = input("Enter the amount you want to deposit: ")
+            is_number = True
+            if amount == "":
+                is_number = False
+            i = 0
+            while i < len(amount):
+                if amount[i] not in digits:
+                    is_number = False
+                i = i + 1
+            if not is_number:
+                print("Please enter the amount using numbers only (e.g. 50).")
+        money = int(amount)
         if money <= 0:
             print("Please enter an amount greater than $0.")
         else:
