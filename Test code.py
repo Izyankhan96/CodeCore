@@ -1,13 +1,11 @@
-print("Welcome to the Task manager system")
-name = input("Please enter your name :")
-password = input("Please enter your password :")
-if name == "Izi" and password == "Izi@123124":
-    print("You may go once you verify your age Izi")
-else:
-    print("Sorry you may not proceed")
-    exit()
+print("Welcome to the theme park ticket scanner")
+print("Please enter your name and age to verify the age to enter")
+name = input("Your name :")
 age = int(input("Age :"))
-if age >= 13:
-    print("Welcome back Izi")
+if name == "Izi":
+    if age >= 15:
+        print("Welcome in!")
+    else:
+        print("No access")
 else:
-    print("Sorry you cant proceed further")
+    print("No access")
