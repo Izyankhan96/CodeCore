@@ -7,6 +7,7 @@ if name == "Izi":
         print("Welcome in!")
     else:
         print("No access")
+        exit()
 else:
     print("No access")
     exit()
