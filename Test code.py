@@ -32,7 +32,5 @@ while True:
     if answer == number:
         print("You guessed it in", tries, "tries!")
         break
-    elif answer < number:
-        print("Too low, try again.")
     else:
-        print("Too high, try again.")
+        print("That's incorrect, try again.")
