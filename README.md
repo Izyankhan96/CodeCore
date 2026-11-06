@@ -2,20 +2,19 @@
 
 A small collection of Python practice projects.
 
-## Theme Park Ticket Scanner
+## Multi-Try Guessing Game
 
-A simple console ticket scanner for a theme park, built using beginner
-Python topics: variables, input, if/else, lists, while loops, `break` and
-`exit()`.
+A console number guessing game with difficulty levels, built using beginner
+Python topics: variables, input, if/elif/else, lists, while loops, `break`,
+`continue` and the `random` module.
 
-- Enter your name and age. Only `Izi` aged 15 or over is let in; anyone else
-  gets "No access" and the program stops.
-- Once inside, it lists the rides: water slide, castle adventure and fast and
-  furious ride.
-- Type the ride you want to go to first and it tells you where to find it.
-  Capital letters and extra spaces are ignored, so `  Water Slide ` works.
-- Anything that is not one of the rides asks again until you pick one.
-- The age must be typed as a whole number (e.g. `15`).
+- Pick a level: `Easy` (1-10), `Medium` (1-50) or `Hard` (1-100). Capital
+  letters and extra spaces are ignored, so `  hard ` works. Anything else asks
+  again.
+- Keep guessing until you get it. Each wrong guess tells you whether it was
+  too high or too low.
+- If the guess isn't a whole number, it asks again instead of crashing.
+- When you get it right, it tells you how many tries it took.
 
 ### Running it
 
