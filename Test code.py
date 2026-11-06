@@ -1,28 +1,29 @@
-print("Welcome to the theme park ticket scanner")
-print("Please enter your name and age to verify the age to enter")
-name = input("Your name :")
-age = int(input("Age :"))
-if name == "Izi":
-    if age >= 15:
-        print("Welcome in!")
-    else:
-        print("No access")
-        exit()
-else:
-    print("No access")
-    exit()
-options = ["water slide", "castle adventure", "fast and furious ride"]
+print("Hello Welcome to the Multi-Try guessing game with diffuculty levels")
+options = ["Easy","Medium","Hard"]
 print(options)
+import random
 while True:
-    choice = input("So where to first? ").strip().lower()
-    if choice == "water slide":
-        print("The water slide is on your right. Just scan your ticket and enjoy!")
-        break
-    elif choice == "castle adventure":
-        print("The Castle Adventure is straight down and then on your left.")
-        break
-    elif choice == "fast and furious ride":
-        print("That will be on your left. Enjoy!")
-        break
-    else:
-        print("Sorry, that is not one of the options. Please try again.")
+    choice = input("Please select what level you would like to play on")
+    if choice == "Easy":
+        number = random.randint(1, 10)
+        print(number)
+        answer = int(input("Guess the number :"))
+        if answer == number:
+            print("You guessed it!")
+            break
+        if choice == "Medium":
+            number_2 = random.randint(1, 50)
+            print(number_2)
+            answer_2 = int(input("Guess the number : "))
+            if answer_2 == number_2:
+                print("You guessed it")
+                break
+            if choice == "Hard":
+                number_3 = random.randint(1, 100)
+                print(number_3)
+                answer_3 = int(input("Guess the number : "))
+                if answer_3 == number_3:
+                    print("You guessed it!")
+                    break
+        else:
+            print("Thats incorrect")
