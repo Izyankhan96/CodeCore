@@ -1,5 +1,5 @@
 import random
-print("Welcome to the gussing game (no number edition)")
+print("Welcome to the gussing game (no number edition)In this game the word changes after every guess")
 options = ["Easy","Medium","Hard"]
 words = ["Random","Mystery","White Stone","Gate"]
 words2 = ["Never","Win","Again","Try","Gain","Lose"]
