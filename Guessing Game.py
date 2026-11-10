@@ -31,7 +31,7 @@ while True:
     print("Okay............")
     word3 = random.choice(words3)
     guess3 = input("Guess the word : ")
-    if guess == word3:
+    if guess3 == word3:
        print("You guessed it!")
        break
     else:
