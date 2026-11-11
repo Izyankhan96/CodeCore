@@ -23,4 +23,5 @@ python3 "Test code.py"
 
 ## Other projects
 
-The ATM project lives on the `code-core-database` branch.
+The Guessing Game (no number edition) and the Password Generator live on the
+`code-core-database` branch.
