@@ -2,22 +2,46 @@
 
 A small collection of Python practice projects.
 
-## ATM
+## Guessing Game (no number edition)
 
-A simple console ATM for FDB Bank, built using only beginner Python topics:
-variables, input, f-strings, if/elif/else, lists and while loops.
+A console word guessing game with difficulty levels, built using beginner
+Python topics: variables, input, if/else, lists, while loops, `break` and the
+`random` module.
 
-- Enter the PIN to log in (it keeps asking until the PIN is correct).
-- Pick an option from the menu: 1 Withdrawal, 2 Deposit, 3 Balance Inquiry,
-  4 Exit.
-- Withdrawals must be more than $0, no more than $1000 at a time, and no more
-  than your balance.
-- Amounts must be whole dollars typed with numbers only (e.g. `50`). Anything
-  else, such as `abc`, `20.50`, `$50` or a blank entry, asks for the amount
-  again.
+- Pick a level: `Easy`, `Medium` or `Hard`. Each level has its own list of
+  words.
+- Guess the word. A wrong guess says so and lets you guess again.
+- The secret word changes after every guess.
+- Guesses must match exactly, including capital letters and spaces (e.g.
+  `White Stone`).
+- The level must be typed exactly as shown (`Easy`, not `easy`).
 
 ### Running it
 
 ```
-python3 ATM.py
+python3 "Guessing Game.py"
 ```
+
+## Password Generator
+
+A console password generator with difficulty levels, built using beginner
+Python topics: variables, input, if/elif/else, lists, strings, while loops,
+f-strings and the `random` module.
+
+- Pick a level. Capital letters and extra spaces are ignored, so ` easy `
+  works. Anything else asks again.
+- `Easy` makes an 8-character password from capital letters.
+- `Medium` makes a 12-character password from capital letters and numbers.
+- `Hard` makes a 16-character password from lowercase and capital letters,
+  numbers and the symbols `!@#$`.
+
+### Running it
+
+```
+python3 "Password generator.py"
+```
+
+## Other projects
+
+The ATM project used to live on this branch. It can still be found in the git
+history.
