@@ -1,11 +1,11 @@
 import random
-print("Welcome to the gussing game (no number edition)In this game the word changes after every guess")
+print("Welcome to the guessing game (no number edition)In this game the word changes after every guess")
 options = ["Easy","Medium","Hard"]
 words = ["Random","Mystery","White Stone","Gate"]
 words2 = ["Never","Win","Again","Try","Gain","Lose"]
 words3 = ["Haha","Try again","Lol"]
 print(options)
-print("They will contain words like Random, Mystery, etc... You have to guess the exact word (Hint all words first word have to capital)")
+print("They will contain words like Random, Mystery, etc... You have to guess the exact word (Capital letters don't matter)")
 choice = input("Please select an option : ").strip().capitalize()
 while choice not in options:
     print("Not a valid level. Please type Easy, Medium or Hard.")
@@ -14,8 +14,8 @@ while True:
  if choice == "Easy":
     print("Okay.")
     word = random.choice(words)
-    guess = input("Guess the word : ")
-    if guess == word:
+    guess = input("Guess the word : ").strip().lower()
+    if guess == word.lower():
         print("You guessed it!")
         break
     else:
@@ -24,8 +24,8 @@ while True:
  if choice == "Medium":
     print("Okay....")
     word2 = random.choice(words2)
-    guess2 = input("Guess the word : ")
-    if guess2 == word2:
+    guess2 = input("Guess the word : ").strip().lower()
+    if guess2 == word2.lower():
        print("You guessed it!")
        break
     else: 
@@ -33,8 +33,8 @@ while True:
  if choice == "Hard":
     print("Okay............")
     word3 = random.choice(words3)
-    guess3 = input("Guess the word : ")
-    if guess3 == word3:
+    guess3 = input("Guess the word : ").strip().lower()
+    if guess3 == word3.lower():
        print("You guessed it!")
        break
     else:
