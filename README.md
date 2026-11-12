@@ -12,9 +12,10 @@ Python topics: variables, input, if/else, lists, while loops, `break` and the
   words.
 - Guess the word. A wrong guess says so and lets you guess again.
 - The secret word changes after every guess.
-- Guesses must match exactly, including capital letters and spaces (e.g.
-  `White Stone`).
-- The level must be typed exactly as shown (`Easy`, not `easy`).
+- Capital letters and extra spaces are ignored in guesses, so `white stone`
+  counts as `White Stone`.
+- Capital letters and extra spaces are ignored in the level too, so ` easy `
+  works. Anything else asks again.
 
 ### Running it
 
