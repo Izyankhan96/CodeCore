@@ -6,7 +6,10 @@ words2 = ["Never","Win","Again","Try","Gain","Lose"]
 words3 = ["Haha","Try again","Lol"]
 print(options)
 print("They will contain words like Random, Mystery, etc... You have to guess the exact word (Hint all words first word have to capital)")
-choice = input("Please select an option : ")
+choice = input("Please select an option : ").strip().capitalize()
+while choice not in options:
+    print("Not a valid level. Please type Easy, Medium or Hard.")
+    choice = input("Please select an option : ").strip().capitalize()
 while True:
  if choice == "Easy":
     print("Okay.")
