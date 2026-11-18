@@ -18,7 +18,7 @@ Python topics: variables, input, if/elif/else, lists, while loops, `break`,
 ### Running it
 
 ```
-python3 "Test code.py"
+python3 Testcode.py
 ```
 
 ## Other projects
