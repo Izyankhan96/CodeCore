@@ -20,7 +20,7 @@ Python topics: variables, input, if/else, lists, while loops, `break` and the
 ### Running it
 
 ```
-python3 "Guessing Game.py"
+python3 GuessingGame.py
 ```
 
 ## Password Generator
@@ -39,7 +39,7 @@ f-strings and the `random` module.
 ### Running it
 
 ```
-python3 "Password generator.py"
+python3 PasswordGenerator.py
 ```
 
 ## Other projects
