@@ -42,6 +42,22 @@ f-strings and the `random` module.
 python3 PasswordGenerator.py
 ```
 
+## Running the tests
+
+`test_games.py` checks that both games run and behave as described above. It
+uses `unittest`, which comes with Python, so there is nothing to install.
+
+From this folder, run:
+
+```
+python3 -m unittest -v
+```
+
+Each test pretends to be the player by typing answers in advance, and for the
+guessing game it picks the secret word itself so it knows the right answer.
+You should see every test end in `ok`, then `OK` at the bottom. If you change a
+game, run the tests again to check nothing broke.
+
 ## Other projects
 
 The ATM project used to live on this branch. It can still be found in the git
