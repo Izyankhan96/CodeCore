@@ -1,0 +1,3 @@
+# Your saved password vault. Never commit it.
+vault.dat
+vault.salt

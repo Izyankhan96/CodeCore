@@ -42,6 +42,29 @@ f-strings and the `random` module.
 python3 PasswordGenerator.py
 ```
 
+## Password Manager
+
+A terminal password manager that keeps your passwords in an encrypted file.
+This one is a step up: it uses functions, dictionaries, files, JSON,
+`try`/`except` and the `cryptography` library.
+
+- The first time you run it, choose a master password (you type it twice).
+- After that, you need the master password to unlock the vault. You get 3
+  tries.
+- Menu options: `Add`, `Get`, `List`, `Delete` and `Quit`.
+- Passwords are saved in `vault.dat`, encrypted with Fernet. The key is made
+  from your master password with PBKDF2 and a random salt kept in
+  `vault.salt`. The master password itself is never saved, so if you forget
+  it the vault can't be opened.
+- Passwords you type are hidden, like on a login screen.
+
+### Running it
+
+```
+pip install -r requirements.txt
+python3 PasswordManager.py
+```
+
 ## Other projects
 
 The ATM project used to live on this branch. It can still be found in the git
