@@ -1,3 +1,6 @@
 # Your saved password vault. Never commit it.
 vault.dat
 vault.salt
+
+# Python cache files, made automatically when the code runs.
+__pycache__/
