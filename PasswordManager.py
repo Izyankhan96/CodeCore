@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+import secrets
 from getpass import getpass
 
 from cryptography.fernet import Fernet, InvalidToken
@@ -17,6 +18,13 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 VAULT_FILE = "vault.dat"
 SALT_FILE = "vault.salt"
 
+# The same levels as PasswordGenerator.py.
+LEVELS = {
+    "Easy": ("ABCDEFGHIJKL", 8),
+    "Medium": ("ABCDEFGHIJKLMNOPQRSTUVWXYZ123", 12),
+    "Hard": ("abcdefghijklmnopqrstuvwxyzABCDEFGHJKL12345!@#$", 16),
+}
+
 
 def make_key(master_password, salt):
     # PBKDF2 scrambles the master password many times, so guessing it is slow.
@@ -30,6 +38,34 @@ def make_key(master_password, salt):
     key = kdf.derive(master_password.encode())
     # Fernet wants the key written in base64.
     return base64.urlsafe_b64encode(key)
+
+
+def generate_password():
+    # This is the Password Generator game turned into a function.
+    # It uses secrets.choice instead of random.choice: random is fine for
+    # games, but secrets is made for passwords and is much harder to guess.
+    options = list(LEVELS)
+    print(options)
+    choice = input("Please select a level : ").strip().capitalize()
+    while choice not in options:
+        print("That's not a level. Please type Easy, Medium or Hard.")
+        choice = input("Please select a level : ").strip().capitalize()
+
+    characters, length = LEVELS[choice]
+    password = ""
+    i = 0
+    while i < length:
+        password = password + secrets.choice(characters)
+        i = i + 1
+    print(f"Generated password: {password}")
+    return password
+
+
+def ask_for_password():
+    answer = input("Generate a password for you? (y/n): ").strip().lower()
+    if answer == "y":
+        return generate_password()
+    return getpass("Password: ")
 
 
 def save_vault(entries, fernet):
@@ -98,7 +134,7 @@ def add_entry(entries, fernet):
         if answer != "y":
             return
     username = input("Username: ").strip()
-    password = getpass("Password: ")
+    password = ask_for_password()
     entries[site] = {"username": username, "password": password}
     save_vault(entries, fernet)
     print(f"Saved {site}.")
@@ -123,6 +159,71 @@ def list_entries(entries):
         print(f"- {site} ({entries[site]['username']})")
 
 
+def search_entries(entries):
+    word = input("Search for: ").strip().lower()
+    found = []
+    for site in sorted(entries):
+        if word in site:
+            found.append(site)
+    if len(found) == 0:
+        print(f"No sites match {word}.")
+        return
+    print("Matching sites:")
+    for site in found:
+        print(f"- {site} ({entries[site]['username']})")
+
+
+def edit_entry(entries, fernet):
+    site = input("Site name: ").strip().lower()
+    if site not in entries:
+        print(f"No entry called {site}.")
+        return
+    entry = entries[site]
+
+    # Pressing Enter without typing keeps the old value.
+    username = input(f"New username (Enter keeps {entry['username']}): ").strip()
+    if username != "":
+        entry["username"] = username
+
+    answer = input("Change the password? (y/n): ").strip().lower()
+    if answer == "y":
+        entry["password"] = ask_for_password()
+
+    save_vault(entries, fernet)
+    print(f"Updated {site}.")
+
+
+def change_master_password(entries, fernet):
+    # Check it's really you before changing anything.
+    with open(SALT_FILE, "rb") as file:
+        salt = file.read()
+    current = getpass("Current master password: ")
+    try:
+        load_vault(Fernet(make_key(current, salt)))
+    except InvalidToken:
+        print("That's not the current master password.")
+        return fernet
+
+    while True:
+        new = getpass("New master password: ")
+        again = getpass("Type it again: ")
+        if new == "":
+            print("The master password can't be empty. Try again.")
+        elif new != again:
+            print("The passwords did not match. Try again.")
+        else:
+            break
+
+    # A new password gets a new salt, then everything is saved with the new key.
+    new_salt = os.urandom(16)
+    new_fernet = Fernet(make_key(new, new_salt))
+    save_vault(entries, new_fernet)
+    with open(SALT_FILE, "wb") as file:
+        file.write(new_salt)
+    print("Master password changed.")
+    return new_fernet
+
+
 def delete_entry(entries, fernet):
     site = input("Site name: ").strip().lower()
     if site not in entries:
@@ -145,7 +246,7 @@ def main():
     else:
         entries, fernet = create_vault()
 
-    options = ["Add", "Get", "List", "Delete", "Quit"]
+    options = ["Add", "Get", "List", "Search", "Edit", "Delete", "Generate", "Master", "Quit"]
     while True:
         print()
         print(options)
@@ -156,13 +257,21 @@ def main():
             get_entry(entries)
         elif choice == "List":
             list_entries(entries)
+        elif choice == "Search":
+            search_entries(entries)
+        elif choice == "Edit":
+            edit_entry(entries, fernet)
+        elif choice == "Generate":
+            generate_password()
+        elif choice == "Master":
+            fernet = change_master_password(entries, fernet)
         elif choice == "Delete":
             delete_entry(entries, fernet)
         elif choice == "Quit":
             print("Goodbye.")
             break
         else:
-            print("That's not an option. Please type Add, Get, List, Delete or Quit.")
+            print("That's not an option. Please pick one from the list.")
 
 
 if __name__ == "__main__":

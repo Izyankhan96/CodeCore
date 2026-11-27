@@ -51,7 +51,21 @@ This one is a step up: it uses functions, dictionaries, files, JSON,
 - The first time you run it, choose a master password (you type it twice).
 - After that, you need the master password to unlock the vault. You get 3
   tries.
-- Menu options: `Add`, `Get`, `List`, `Delete` and `Quit`.
+- Menu options:
+  - `Add` saves a site, username and password. It can make the password for
+    you with the generator.
+  - `Get` shows the username and password for a site.
+  - `List` shows every saved site.
+  - `Search` shows the sites whose name contains what you type, so `git`
+    finds `github`.
+  - `Edit` changes a site's username or password. Press Enter to keep the old
+    username.
+  - `Delete` removes a site.
+  - `Generate` makes a password with the same `Easy`, `Medium` and `Hard`
+    levels as the Password Generator. It uses the `secrets` module, which is
+    made for passwords, instead of `random`.
+  - `Master` changes the master password. You type the current one first.
+  - `Quit` exits.
 - Passwords are saved in `vault.dat`, encrypted with Fernet. The key is made
   from your master password with PBKDF2 and a random salt kept in
   `vault.salt`. The master password itself is never saved, so if you forget
